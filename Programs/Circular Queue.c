@@ -60,6 +60,7 @@ element deQueue()
 }
 void displayQueue()
 {
+	int i;
 	if(front==rear)
 		printf("\nThe Queue is empty\n");
 	else
