@@ -3,11 +3,9 @@ typedef enum precedence {lparen,rparen,plus,minus,multiply,divide,mod,eos,operan
 char expr[100];
 int stack[100];
 int top=-1;
-precedence getToken(char *symbol,int *n)
-{
+precedence getToken(char *symbol,int *n) {
 	*symbol=expr[(*n)++];
-	switch(*symbol)
-	{
+	switch(*symbol) {
 		case '(': return lparen;
 		case ')': return rparen;
 		case '+': return plus;
@@ -20,37 +18,30 @@ precedence getToken(char *symbol,int *n)
 		default: return operand;
 	}
 }
-void push(int token)
-{
+void push(int token) {
 	stack[++top]=token;
 }
-int pop()
-{
+int pop() {
 	return stack[top--];
 }
-int eval(void)
-{
+int eval(void) {
 	precedence token;
 	char symbol;
 	int op1,op2;
 	int n=0;
 	token=getToken(&symbol,&n);
-	while(token!=eos)
-	{
-		if(token==operand)
-		{
+	while(token!=eos) {
+		if(token==operand) {
 			push(symbol-'0');
 		}
-		else
-		{
+		else {
 			op2=pop();
 			op1=pop();
-			switch(token)
-			{
+			switch(token) {
 				case lparen: break;
 				case rparen: break;
 				case plus: push(op1+op2);
-							break;
+										break;
 				case minus: push(op1-op2);
 							break;
 				case multiply: push(op1*op2);
@@ -67,9 +58,9 @@ int eval(void)
 	}
 	return pop();
 }
-int main()
-{
+int main() {
 	printf("Enter expression:\n");
 	scanf("%s",expr);
 	printf("Result: %d\n",eval());
+	return 0;
 }

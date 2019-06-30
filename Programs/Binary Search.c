@@ -1,12 +1,9 @@
 #include <stdio.h>
-void Sort(int A[],int n)
-{
+void Sort(int A[],int n) {
 	int i,j,min,temp;
-	for(i=0;i<n;i++)
-	{
+	for(i=0;i<n;i++) {
 		min=i;
-		for(j=i+1;j<n;j++)
-		{
+		for(j=i+1;j<n;j++) {
 			if(A[j]<A[min])
 				min=j;
 		}
@@ -15,8 +12,7 @@ void Sort(int A[],int n)
 		A[min]=temp;
 	}
 }
-int Search(int A[],int low,int high,int key)
-{
+int Search(int A[],int low,int high,int key) {
 	int mid,i,j;
 	mid=(low+high)/2;
 	if(A[mid]==key)
@@ -28,15 +24,14 @@ int Search(int A[],int low,int high,int key)
 	else
 		return -1;
 }
-int main()
-{
+int main() {
 	int A[100],i,j,n,pos,key;
-	printf("enter number of elements\n");
+	printf("Enter number of elements:\n");
 	scanf("%d",&n);
-	printf("enter array elements\n");
+	printf("Enter array elements:\n");
 	for(i=0;i<n;i++)
 		scanf("%d",&A[i]);
-	printf("\nenter the element to be searched for\n");
+	printf("\nEnter the element to be searched for:\n");
 	scanf("%d",&key);
 	Sort(A,n);
 	printf("\nSorted array is\n");
@@ -45,7 +40,8 @@ int main()
 	printf("\n");
 	pos=Search(A,0,n-1,key);
 	if (pos==-1)
-		printf("element not found\n");
+		printf("Element not found\n");
 	else
-		printf("element found at %d\n",pos);
+		printf("Element found at %d\n",pos);
+	return 0;
 }

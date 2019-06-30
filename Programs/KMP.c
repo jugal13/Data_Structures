@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <string.h>
-void fail(char *pat,int failure[])
-{
+void fail(char *pat,int failure[]) {
 	int i,j,n=strlen(pat);
 	failure[0]=-1;
-	for(j=1;j<n;j++)
-	{
+	for(j=1;j<n;j++) {
 		i=failure[j-1];
 		while((pat[j]!=pat[i+1]) && (i>=0))
 			i=failure[i];
@@ -15,15 +13,12 @@ void fail(char *pat,int failure[])
 				failure[j]=-1;	
 	}
 }
-int pmatch(char *string,char *pat, int failure[])
-{
+int pmatch(char *string,char *pat, int failure[]) {
 	int i=0,j=0;
 	int lens=strlen(string);
 	int lenp=strlen(pat);
-	while(i<lens && j<lenp)
-	{
-		if(string[i]==pat[j])
-		{
+	while(i<lens && j<lenp) {
+		if(string[i]==pat[j]) {
 			i++;
 			j++;
 		}
@@ -34,8 +29,7 @@ int pmatch(char *string,char *pat, int failure[])
 	}
 	return ((j==lenp)?(i-lenp):-1);
 }
-int main()
-{
+int main() {
 	char string[50],pat[50];
 	int ch,i;
 	int failure[100];
@@ -49,4 +43,5 @@ int main()
 		printf("%d",failure[i]);
 	printf("\n");
 	printf("pos of match is %d\n",pmatch(string,pat,failure)+1);
+	return 0;
 }
